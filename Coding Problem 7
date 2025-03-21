@@ -1,0 +1,67 @@
+// studentEnrollment.js
+
+// Arrays for student enrollments in DSA and WebDev
+let DSA = [];
+let WebDev = [];
+
+while (true) {
+    // Ask the user to select a subject
+    let subjectChoice = prompt("Select a subject:\n(A) DSA\n(B) WebDev\n(Type A or B)").toUpperCase();
+
+    let selectedSubject;
+    if (subjectChoice === "A") {
+        selectedSubject = DSA;
+        alert("You selected DSA.");
+    } else if (subjectChoice === "B") {
+        selectedSubject = WebDev;
+        alert("You selected WebDev.");
+    } else {
+        alert("Invalid selection. Please choose again.");
+        continue;
+    }
+
+    // Operations Menu
+    let operation = prompt("Choose an operation:\n(A) Enroll\n(B) Unenroll\n(C) Select Another Subject\n(D) Exit").toUpperCase();
+
+    if (operation === "A") { 
+        // Enroll a student
+        let studentName = prompt("Enter the name of the student to enroll:");
+        selectedSubject.push(studentName);
+        alert(`${studentName} has been enrolled.`);
+    } 
+    
+    else if (operation === "B") { 
+        // Unenroll a student
+        if (selectedSubject.length === 0) {
+            alert("No students enrolled in this subject.");
+        } else {
+            alert("Currently enrolled students:\n" + selectedSubject.join(", "));
+            let studentName = prompt("Enter the name of the student to unenroll:");
+            let index = selectedSubject.indexOf(studentName);
+            if (index !== -1) {
+                selectedSubject.splice(index, 1);
+                alert(`${studentName} has been unenrolled.`);
+            } else {
+                alert("Student not found.");
+            }
+        }
+    } 
+    
+    else if (operation === "C") { 
+        // Select another subject
+        continue;
+    } 
+    
+    else if (operation === "D") { 
+        // Exit and print enrolled students
+        alert("Final Enrollments:\nDSA: " + DSA.join(", ") + "\nWebDev: " + WebDev.join(", "));
+        console.log("Final Enrollment Lists:");
+        console.log("DSA:", DSA);
+        console.log("WebDev:", WebDev);
+        break;
+    } 
+    
+    else {
+        alert("Invalid operation. Please choose again.");
+    }
+} 
