@@ -1,0 +1,36 @@
+/ groceryList.js
+
+// Ask the user if they want to create a grocery list
+let createList = prompt("Would you like to create a grocery list? (y/n):").toLowerCase();
+
+if (createList === "y") {
+    // Ask how many items the user wants to add
+    let numItems = parseInt(prompt("How many items do you want to add to your grocery list?"));
+
+    // Initialize an empty array for the grocery list
+    let groceryList = [];
+
+    // Loop to collect grocery items
+    for (let i = 0; i < numItems; i++) {
+        let item = prompt(`Enter item ${i + 1}:`);
+        groceryList.push(item);
+    }
+
+    // Sort the grocery list in ascending order
+    let sortedList = [...groceryList].sort();
+
+    // Reverse the sorted list
+    let reversedList = [...sortedList].reverse();
+
+    // Display the lists using alert
+    alert("Your grocery list: " + groceryList.join(", "));
+    alert("Sorted list: " + sortedList.join(", "));
+    alert("Reversed list: " + reversedList.join(", "));
+
+    // Log the lists in the console
+    console.log("Original List:", groceryList);
+    console.log("Sorted List:", sortedList);
+    console.log("Reversed List:", reversedList);
+} else {
+    alert("No grocery list created.");
+}
